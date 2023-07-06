@@ -6,7 +6,7 @@ export default () => {
   let dbConnector = null;
   
   const connectionString = config.mongoDbUrl;
-  
+  mongoose.set('strictQuery', true);
   mongoose.connect(connectionString, function (err, database) {
     if (err) {
       console.error(err);
@@ -15,4 +15,5 @@ export default () => {
     dbConnector = database;
     console.log("Connection to MongoDb established successfully");
   });
+
 };

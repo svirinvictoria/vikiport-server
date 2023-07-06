@@ -8,13 +8,12 @@
     "build": "babel src -s -D -d dist --presets es2015,stage-0",
     "prestart": "npm run -s build",
     "start": "node ./dist/index.js",
-    "prod": "set NODE_ENV=prod&& node ./dist/index.js"
+    "prod": "set NODE_ENV=prod&& npm run -s build&& node ./dist/index.js"
   },
   "author": "Vasiliy Svirin",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.27.2",
-    "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "cors": "^2.8.5",
@@ -24,7 +23,7 @@
     "regenerator-runtime": "^0.13.9"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "nodemon": "^2.0.20"
-    
   }
 }
