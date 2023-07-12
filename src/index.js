@@ -20,8 +20,9 @@ app.get("/test-route", (req, res) => {
     });
 });
 
-app.get("/test-route", (req, res) => {
-    res.setHeader('Content-Type', 'application/json');
+app.get("/test-data", (req, res) => {
+    res.setHeader('Content-Type', 'text/html');
+    res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
     res.end({
         message: "Test route is working!",
     });
