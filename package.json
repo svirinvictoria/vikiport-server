@@ -2,13 +2,13 @@
   "name": "vikiport",
   "version": "1.0.0",
   "description": "Servicr to access from application",
-  "main": "dist",
+  "main": "public",
   "scripts": {
     "dev": "set NODE_ENV=dev&& nodemon -w src --exec \"babel-node src --presets es2015,stage-0\"",
-    "build": "babel src -s -D -d dist --presets es2015,stage-0",
+    "build": "babel src -s -D -d public --presets es2015,stage-0",
     "prestart": "npm run -s build",
-    "start": "node ./dist/index.js",
-    "prod": "set NODE_ENV=prod&& npm run -s build&& node ./dist/index.js"
+    "start": "node ./public/index.js",
+    "prod": "set NODE_ENV=prod&& npm run -s build&& node ./public/index.js"
   },
   "author": "Vasiliy Svirin",
   "license": "ISC",
