@@ -12,14 +12,8 @@ const bodyParser = require("body-parser");
 
 app.use(bodyParser.json());
 app.use(cors());
-
-// app.get("/test-route", (req, res) => {
-//   res.json({
-//     message: "Test route is working!",
-//   });
-// });
-
 app.use("/api", router);
+app.use(express.static('public'));
 
 connectToMongo();
 
