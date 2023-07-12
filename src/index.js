@@ -33,6 +33,5 @@ app.use(express.static('public'));
 
 connectToMongo();
 
-// app.server.listen(config.port);
-// console.log(`Started on port ${app.server.address().port}`);
-module.exports = app;
+app.server.listen(config.port);
+console.log(`Started on port ${app.server.address().port}`);
