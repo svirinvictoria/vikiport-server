@@ -20,6 +20,13 @@ app.get("/test-route", (req, res) => {
     });
 });
 
+app.get("/test-route", (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.end({
+        message: "Test route is working!",
+    });
+});
+
 app.use("/api", router);
 app.use(express.static('public'));
 
