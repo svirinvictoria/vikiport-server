@@ -5,7 +5,7 @@ export default class DataAccess {
     console.log("DataAccess is getting actual weather");
     return new Promise(async (resolve, reject) => {
       //идем в базу данных в коллекцию weatherItem
-      WeatherItem.findOne(
+      WeatherItem.find(
         {
           timestamp: {
             $gte: new Date(new Date().getTime() - 1000 * 60 * 60 * 1),
