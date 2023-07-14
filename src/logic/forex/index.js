@@ -7,11 +7,9 @@ const getActualForex = () =>{
             console.log("logic/forex is working");
             let forexData = await dataAccess.getActualForex();
             if (forexData == null || forexData.length == 0){
-
                 const forex = await proxy.getActualForex();
                 const serialized = JSON.stringify(forex);
                 forexData = await dataAccess.saveActualForex(serialized);
-                
             }
             resolve(forexData)
         } catch (err) {

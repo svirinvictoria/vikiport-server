@@ -2,17 +2,24 @@ import WeatherItem from "./index";
 
 export default class DataAccess {
   static getActualWeather() {
-    console.log('DataAccess is getting actual weather');
+    console.log("DataAccess is getting actual weather");
     return new Promise(async (resolve, reject) => {
       //идем в базу данных в коллекцию weatherItem
-      WeatherItem.find({}, (err, foundItem) => {
-        if (err) {
-          console.error(err);
-          reject(err);
+      WeatherItem.findOne(
+        {
+          timestamp: {
+            $gte: new Date(new Date().getTime() - 1000 * 60 * 60 * 1),
+          },
+        },
+        (err, foundItem) => {
+          if (err) {
+            console.error(err);
+            reject(err);
+          }
+          resolve(foundItem);
         }
-        resolve(foundItem);
-      })
-      // сортируем в порядке убывания
+      )
+        // сортируем в порядке убывания
         .sort({ $natural: -1 })
         .limit(1);
     });
@@ -20,10 +27,10 @@ export default class DataAccess {
 
   static saveActualWeather(data) {
     return new Promise(async (resolve, reject) => {
-      console.log('dataAccess is saving actual weather' );
+      console.log("dataAccess is saving actual weather");
       const newWeatherItem = new WeatherItem({
         timestamp: new Date(),
-       payload: data,
+        payload: data,
       });
       newWeatherItem.save((err) => {
         if (err) {
@@ -34,6 +41,4 @@ export default class DataAccess {
       });
     });
   }
-
-
 }
