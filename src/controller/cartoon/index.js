@@ -22,5 +22,15 @@ export default ({}) => {
     }
   });
 
+  api.get("/characters/:id", async (req, res) => {
+    try {
+      const result = await logic.getCharachterById(req.params.id);
+      res.status(200).json({ data: result });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: "Failed to load current data" });
+    }
+  });
+
   return api;
 };
