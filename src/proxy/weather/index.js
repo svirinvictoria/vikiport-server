@@ -9,7 +9,6 @@ export default class DataAccess {
                 const headers = {ContentType: 'application/json'};
                 const result = await axios.get(url, { headers });
                 if (result) {
-                    console.log(result);
                     resolve(result.data);
                 } else {
                     reject("Can't load data from service. Data is null");

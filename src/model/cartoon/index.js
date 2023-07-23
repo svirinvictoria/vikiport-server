@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 
 try {
-    if(mongoose.model("ForexItem")){
-        module.exports = mongoose.model("ForexItem");
+    if(mongoose.model("CartoonItem")){
+        module.exports = mongoose.model("CartoonItem");
     }
 }catch(e) {
     if(e.name === "MissingSchemaError") {
-        const forexItemSchema = new mongoose.Schema({
+        const cartoonItemSchema = new mongoose.Schema({
             timestamp:{
                 type: Date,
                 required: true,
@@ -16,6 +16,6 @@ try {
                 required: true,
             },
         });
-        module.exports = mongoose.model("ForexItem", forexItemSchema);
+        module.exports = mongoose.model("CartoonItem", cartoonItemSchema);
     }
 }

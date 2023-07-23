@@ -1,9 +1,9 @@
-import ForexItem from "./index";
+import CartoonItem from "./index";
 
 export default class DataAccess {
-  static getActualForex() {
+  static getActualCartoon() {
     return new Promise(async (resolve, reject) => {
-      ForexItem.findOne(
+      CartoonItem.findOne(
         {
           timestamp: {
             $gte: new Date(new Date().getTime() - 1000 * 60 * 60 * 3),
@@ -20,18 +20,18 @@ export default class DataAccess {
     });
   }
 
-  static saveActualForex(data) {
+  static saveActualCartoon(data) {
     return new Promise(async (resolve, reject) => {
-      const newForexItem = new ForexItem({
+      const newCartoonItem = new CartoonItem({
         timestamp: new Date(),
         payload: data,
       });
-      newForexItem.save((err) => {
+      newCartoonItem.save((err) => {
         if (err) {
           console.error(err);
           reject(err);
         }
-        resolve(newForexItem);
+        resolve(newCartoonItem);
       });
     });
   }

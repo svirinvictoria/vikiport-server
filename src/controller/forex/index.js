@@ -7,12 +7,9 @@ export default ({}) =>{
     const api = Router();
 
     api.get("/isalive", (request, response)=>{
-        console.log("controller/forex is working");
-
         response.status(200).json({
             isAlive: true,
         });
-        
     });
 
     api.get("/actual", async(req, res)=>{

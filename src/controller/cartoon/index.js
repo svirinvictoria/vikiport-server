@@ -14,7 +14,7 @@ export default ({}) => {
 
   api.get("/characters", async (req, res) => {
     try {
-      const result = await logic.getCharachters();
+      const result = await logic.getCartoonItems();
       res.status(200).json({ data: result });
     } catch (err) {
       console.error(err);

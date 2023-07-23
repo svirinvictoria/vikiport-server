@@ -7,13 +7,10 @@ const getActualWeather = () => {
       let weatherData = await dataAccess.getActualWeather();
 
       if (weatherData == null || weatherData.length == 0) {
-        console.log("WeatherData is empty");
         const weather = await proxy.getActualWeather();
         const serialized = JSON.stringify(weather);
         weatherData = await dataAccess.saveActualWeather(serialized);
       }
-
-      // console.log(weatherData);
       resolve(weatherData);
     } catch (error) {
       reject(error);
