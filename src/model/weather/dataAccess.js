@@ -3,8 +3,7 @@ import WeatherItem from "./index";
 export default class DataAccess {
   static getActualWeather() {
     return new Promise(async (resolve, reject) => {
-      //идем в базу данных в коллекцию weatherItem
-      WeatherItem.find(
+      WeatherItem.findOne(
         {
           timestamp: {
             $gte: new Date(new Date().getTime() - 1000 * 60 * 60 * 1),
@@ -18,7 +17,6 @@ export default class DataAccess {
           resolve(foundItem);
         }
       )
-        // сортируем в порядке убывания
         .sort({ $natural: -1 })
         .limit(1);
     });
