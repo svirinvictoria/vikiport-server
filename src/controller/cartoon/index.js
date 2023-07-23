@@ -12,7 +12,7 @@ export default ({}) => {
     });
   });
 
-  api.get("/characters", async (req, res) => {
+  api.get("/cartoons", async (req, res) => {
     try {
       const result = await logic.getCartoonItems();
       res.status(200).json({ data: result });
@@ -22,7 +22,7 @@ export default ({}) => {
     }
   });
 
-  api.get("/characters/:id", async (req, res) => {
+  api.get("/cartoons/:id", async (req, res) => {
     try {
       const result = await logic.getCharachterById(req.params.id);
       res.status(200).json({ data: result });
